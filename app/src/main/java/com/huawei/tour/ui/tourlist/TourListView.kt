@@ -30,10 +30,6 @@ fun TourItemView(item: TourItem) {
                 horizontal = 16.dp,
             ),
     ) {
-        if (item.images.isEmpty()) {
-            return
-        }
-
         Image(
             painter = rememberAsyncImagePainter(
                 model = ImageRequest.Builder(LocalContext.current)

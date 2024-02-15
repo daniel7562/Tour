@@ -26,7 +26,7 @@ class TourListViewModel @Inject constructor(
             KEY_API_TOUR_LIST,
         ) { page ->
             val response = tourListRepository.getTourList(page)
-            _tourListStateFlow.emit(response.data)
+            _tourListStateFlow.emit(response.data.filter { it.images.isNotEmpty() })
         }
     }
 
