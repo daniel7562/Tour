@@ -3,7 +3,7 @@ package com.huawei.tour.ui.tourlist
 import com.huawei.tour.base.BaseViewModel
 import com.huawei.tour.data.TourItem
 import com.huawei.tour.di.IODispatcher
-import com.huawei.tour.repository.remote.TourListRemoteRepository
+import com.huawei.tour.repository.TourListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class TourListViewModel @Inject constructor(
     @IODispatcher ioDispatcher: CoroutineDispatcher,
-    private val tourListRepository: TourListRemoteRepository,
+    private val tourListRepository: TourListRepository,
 ) : BaseViewModel(ioDispatcher) {
 
     private val _tourListStateFlow: MutableStateFlow<List<TourItem>> = MutableStateFlow(emptyList())
