@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Tour</string>
+    <string name="tour_item_address">地址：</string>
+    <string name="tour_item_open_time">開放時間：</string>
 </resources>

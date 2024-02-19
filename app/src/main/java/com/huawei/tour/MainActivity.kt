@@ -22,7 +22,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.huawei.tour.ui.theme.TourTheme
-import com.huawei.tour.ui.tourlist.LoadingNextPageItem
+import com.huawei.tour.ui.tourlist.BottomLoadingIndicator
 import com.huawei.tour.ui.tourlist.TourItemView
 import com.huawei.tour.ui.tourlist.TourListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -69,7 +69,7 @@ class MainActivity : ComponentActivity() {
                 tourList.apply {
                     when {
                         loadState.append is LoadState.Loading -> {
-                            item { LoadingNextPageItem(modifier = Modifier) }
+                            item { BottomLoadingIndicator(modifier = Modifier) }
                         }
                     }
                 }

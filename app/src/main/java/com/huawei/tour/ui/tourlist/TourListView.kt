@@ -17,11 +17,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Scale
+import com.huawei.tour.R
 import com.huawei.tour.data.TourItem
+import com.huawei.tour.ui.tourlist.Dimens.BOTTOM_LOADING_INDICATOR_PADDING
+import com.huawei.tour.ui.tourlist.Dimens.TOUR_ITEM_ADDRESS_PADDING_RIGHT
+import com.huawei.tour.ui.tourlist.Dimens.TOUR_ITEM_HORIZONTAL_PADDING
+import com.huawei.tour.ui.tourlist.Dimens.TOUR_ITEM_IMAGE_PADDING_RIGHT
+import com.huawei.tour.ui.tourlist.Dimens.TOUR_ITEM_IMAGE_SIZE
+import com.huawei.tour.ui.tourlist.Dimens.TOUR_ITEM_NAME_PADDING_RIGHT
+import com.huawei.tour.ui.tourlist.Dimens.TOUR_ITEM_VERTICAL_PADDING
 
 @Composable
 fun TourItemView(item: TourItem) {
@@ -29,50 +36,51 @@ fun TourItemView(item: TourItem) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                vertical = 8.dp,
-                horizontal = 16.dp,
+                vertical = TOUR_ITEM_VERTICAL_PADDING,
+                horizontal = TOUR_ITEM_HORIZONTAL_PADDING,
             ),
     ) {
         Image(
             painter = rememberAsyncImagePainter(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(item.images[0].src)
+                    .data(item.images.first().src)
                     .scale(Scale.FIT)
                     .build(),
             ),
             contentDescription = null,
             modifier = Modifier
-                .size(104.dp)
+                .size(TOUR_ITEM_IMAGE_SIZE)
                 .aspectRatio(1.0f),
         )
-        Spacer(modifier = Modifier.width(4.dp))
+        Spacer(modifier = Modifier.width(TOUR_ITEM_IMAGE_PADDING_RIGHT))
         DescriptionView(item)
     }
 }
 
 @Composable
 fun DescriptionView(item: TourItem) {
+    val resources = LocalContext.current.resources
     Column {
         Text(
             text = item.name,
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(TOUR_ITEM_NAME_PADDING_RIGHT))
         Text(
-            text = "地址：${item.address}",
+            text = "${resources.getString(R.string.tour_item_address)}${item.address}",
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(TOUR_ITEM_ADDRESS_PADDING_RIGHT))
         Text(
-            text = "開放時間：${item.openTime}",
+            text = "${resources.getString(R.string.tour_item_open_time)}${item.openTime}",
         )
     }
 }
 
 @Composable
-fun LoadingNextPageItem(modifier: Modifier) {
+fun BottomLoadingIndicator(modifier: Modifier) {
     CircularProgressIndicator(
         modifier = modifier
             .fillMaxWidth()
-            .padding(10.dp)
+            .padding(BOTTOM_LOADING_INDICATOR_PADDING)
             .wrapContentWidth(Alignment.CenterHorizontally),
     )
 }

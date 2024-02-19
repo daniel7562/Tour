@@ -23,9 +23,7 @@ class TourPagingSource(
                 prevKey = if (currentPage == 1) null else currentPage - 1,
                 nextKey = if (tourList.isEmpty()) null else currentPage + 1,
             )
-        } catch (exception: IOException) {
-            return LoadResult.Error(exception)
-        } catch (exception: HttpException) {
+        } catch (exception: Exception) {
             return LoadResult.Error(exception)
         }
     }
