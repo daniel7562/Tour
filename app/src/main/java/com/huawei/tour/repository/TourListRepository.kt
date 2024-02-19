@@ -1,15 +1,26 @@
 package com.huawei.tour.repository
 
-import com.huawei.tour.data.TourListResponse
-import com.huawei.tour.repository.remote.TourRemoteApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.huawei.tour.data.TourItem
+import com.huawei.tour.repository.paging.TourPagingSource
+import com.huawei.tour.repository.remote.TourRemoteDataSource
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class TourListRepository @Inject constructor(
-    private val tourRemoteApi: TourRemoteApi
+    private val tourRemoteDataSource: TourRemoteDataSource,
 ) {
-    suspend fun getTourList(page: Int): TourListResponse {
-        return tourRemoteApi.tourList(page)
+    fun getTourList(): Flow<PagingData<TourItem>> {
+        return Pager(
+            config = PagingConfig(Integer.MAX_VALUE, prefetchDistance = 1),
+            initialKey = 1,
+            pagingSourceFactory = {
+                TourPagingSource(tourRemoteDataSource)
+            },
+        ).flow
     }
 }
