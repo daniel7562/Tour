@@ -3,8 +3,8 @@ package com.huawei.tour.data
 import com.google.gson.annotations.SerializedName
 
 data class TourCategoryListResponse(
-    @SerializedName("id")
-    val id: Int,
+    @SerializedName("total")
+    val total: Int,
     @SerializedName("data")
     val data: CategoryData
 )

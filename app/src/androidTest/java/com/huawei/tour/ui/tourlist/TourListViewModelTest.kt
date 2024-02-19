@@ -82,7 +82,7 @@ class TourListViewModelTest {
             emit(mockItems)
         }
         every {
-            tourListRepository.getTourList()
+            tourListRepository.getTourList(any())
         } returns Pager(
             config = PagingConfig(Integer.MAX_VALUE, prefetchDistance = 1),
             initialKey = null,
@@ -101,7 +101,7 @@ class TourListViewModelTest {
             emit(mockItems)
         }
         every {
-            tourListRepository.getTourList()
+            tourListRepository.getTourList(any())
         } returns Pager(
             config = PagingConfig(Integer.MAX_VALUE, prefetchDistance = 1),
             initialKey = null,
