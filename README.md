@@ -9,4 +9,7 @@ This is an app which display attractions of Taipei by catogories.
 - Gson
 - AndroidJUnit4
 
+### Image
+![image](picture or gif url)
+
 
