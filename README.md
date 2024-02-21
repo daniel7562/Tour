@@ -10,6 +10,5 @@ This is an app which display attractions of Taipei by catogories.
 - AndroidJUnit4
 
 ### Image
-![image](picture or gif url)
-
+![picture or gif url](https://github.com/daniel7562/Tour/blob/master/tour_screenshot.png =100x200)
 
