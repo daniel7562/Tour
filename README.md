@@ -5,7 +5,7 @@ This is an app which display attractions of Taipei by catogories.
 - Jetpack Paging
 - Hilt
 - Retrofit
-- OkHttp
+- Okhttp
 - Gson
 - AndroidJUnit4
 
